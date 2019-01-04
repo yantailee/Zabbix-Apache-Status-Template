@@ -291,7 +291,7 @@ if [[ $RET_VAL = 0 ]]; then
 			echo -n "\"$ZABBIXSOURCE\" \"custom.apache[$STATNAME]\" " >> $SENDERFILE
 			LINE=`fgrep -w "$STATNAME:" $STATUSFILE`
 			if [[ $? = 0 ]]; then
-				echo $LINE | sed "s/$STATNAME: //" >> $SENDERFILE
+				echo "$LINE" | head -1 | sed "s/$STATNAME: //" >> $SENDERFILE
 			else
 				echo 0 >> $SENDERFILE;
 			fi
